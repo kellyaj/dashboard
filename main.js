@@ -10,8 +10,9 @@ $.ajax({
   var kelvinTemp = data.main.temp;
   var fahrenheitTemp = kelvinToFahrenheit(kelvinTemp);
   var weatherIconUrl = "http://openweathermap.org/img/w/" + weatherInfo.icon + ".png";
+  var degreeHex = '\xB0'
   $('[data-id=weather-icon]').attr("src", weatherIconUrl);
-  $('[data-id=temp]').html(fahrenheitTemp);
-  $('[data-id=weather-description]').html(description);
+  $('[data-id=temp]').html(fahrenheitTemp + degreeHex);
+  $('[data-id=weather-description]').html(description.toUpperCase());
 });
 

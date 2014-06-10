@@ -1,5 +1,5 @@
-kelvinToFahrenheit = function(kelvin_temp) {
-  return Math.floor((kelvin_temp - 273) * 1.8 + 32);
+kelvinToFahrenheit = function(kelvinTemp) {
+  return Math.floor((kelvinTemp - 273) * 1.8 + 32);
 };
 
 $.ajax({
@@ -7,11 +7,11 @@ $.ajax({
 }).done(function(data) {
   var weatherInfo = data.weather[0];
   var description = weatherInfo.description;
-  var kelvin_temp = data.main.temp;
-  var fahrenheit_temp = kelvinToFahrenheit(kelvin_temp);
+  var kelvinTemp = data.main.temp;
+  var fahrenheitTemp = kelvinToFahrenheit(kelvinTemp);
   var weatherIconUrl = "http://openweathermap.org/img/w/" + weatherInfo.icon + ".png";
   $('[data-id=weather-icon]').attr("src", weatherIconUrl);
-  $('[data-id=temp]').html(fahrenheit_temp);
+  $('[data-id=temp]').html(fahrenheitTemp);
   $('[data-id=weather-description]').html(description);
 });
 

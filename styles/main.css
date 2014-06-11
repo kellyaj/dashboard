@@ -49,6 +49,20 @@ table {
 
 /* styles */
 
+.kr-iframe {
+  margin: 3em 0 0 2em;
+  width: 880px;
+  height: 334px;
+}
+
+.top-sites {
+  margin: 3em 0 0 2em;
+}
+
+.site-list-item {
+  padding: 0.5em 0 0 0;
+}
+
 .weather-info {
   margin: 3em 0 0 2em;
   font-family: "Lucida Console", Monaco, monospace;

@@ -3,10 +3,12 @@ kelvinToFahrenheit = function(kelvinTemp) {
 };
 
 createSiteListItem = function(site) {
-  var html = '<li> <a href="';
+  var html = '<li class="site-list-item"> <a href="';
   html += site.url + '">' + site.title + '</a></li>';
   return html;
 }
+
+
 
 displayTopSites = function(data) {
   var sites = data.slice(0, 10);

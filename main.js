@@ -2,11 +2,26 @@ kelvinToFahrenheit = function(kelvinTemp) {
   return Math.floor((kelvinTemp - 273) * 1.8 + 32);
 };
 
+createSiteListItem = function(site) {
+  var html = '<li> <a href="';
+  html += site.url + '">' + site.title + '</a></li>';
+  return html;
+}
+
+displayTopSites = function(data) {
+  var sites = data.slice(0, 10);
+  for (var i = 0; i < sites.length; i++) {
+    $('[data-id=top-site-list]').append(createSiteListItem(sites[i]));
+  }
+};
+
+chrome.topSites.get(displayTopSites);
+
 navigator.geolocation.getCurrentPosition(function(position) {
-  requestWeather(position.coords.latitude, position.coords.longitude);
+  displayWeather(position.coords.latitude, position.coords.longitude);
 });
 
-requestWeather = function(latitude, longitude) {
+displayWeather = function(latitude, longitude) {
   var requestUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude;
   $.ajax({
     url: requestUrl
@@ -21,4 +36,4 @@ requestWeather = function(latitude, longitude) {
   $('[data-id=temp]').html(fahrenheitTemp + degreeHex);
   $('[data-id=weather-description]').html(description.toUpperCase());
   })
-}
+};

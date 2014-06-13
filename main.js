@@ -8,8 +8,6 @@ createSiteListItem = function(site) {
   return html;
 }
 
-
-
 displayTopSites = function(data) {
   var sites = data.slice(0, 10);
   for (var i = 0; i < sites.length; i++) {
@@ -17,7 +15,18 @@ displayTopSites = function(data) {
   }
 };
 
+
+setFormattedDateTimes = function() {
+  var currentDateTime = new Date();
+  $('[data-id=local-date]').html(currentDateTime.toDateString());
+  $('[data-id=local-time]').html(currentDateTime.toLocaleTimeString());
+}
+
 chrome.topSites.get(displayTopSites);
+
+setFormattedDateTimes();
+window.setInterval(setFormattedDateTimes, 1000);
+
 
 navigator.geolocation.getCurrentPosition(function(position) {
   displayWeather(position.coords.latitude, position.coords.longitude);
@@ -25,6 +34,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
 
 displayWeather = function(latitude, longitude) {
   var requestUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude;
+  $('[data-id=weather-description]').html("Loading...");
   $.ajax({
     url: requestUrl
   }).done(function(data) {

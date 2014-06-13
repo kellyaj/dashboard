@@ -71,3 +71,9 @@ table {
 .weather-icon, .temp, .weather-description {
   display: inline-block;
 }
+
+.time-section {
+  font-family: "Lucida Console", Monaco, monospace;
+  font-weight: 900;
+  margin: 3em 0 0 2em;
+}

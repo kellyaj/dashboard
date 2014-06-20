@@ -8,6 +8,12 @@ createSiteListItem = function(site) {
   return html;
 }
 
+createNYTimesListItem = function(article) {
+  var html = '<li class="nyt-list-item"><h2><a href="';
+  html += article.url + '">' + article.title + '</a></h2><h3>' + article.abstract  + '</h3></li>';
+  return html;
+}
+
 displayTopSites = function(data) {
   var sites = data.slice(0, 10);
   for (var i = 0; i < sites.length; i++) {
@@ -15,6 +21,22 @@ displayTopSites = function(data) {
   }
 };
 
+displayMostVisitedNews = function(data) {
+  var articles = data.results.slice(0, 15);
+  for (var i = 0; i < articles.length; i++) {
+    $('[data-id=news-list]').append(createNYTimesListItem(articles[i]));
+  }
+}
+
+getMostViewedNews = function() {
+  var ki = "ea0e2bd3b4b7853db2a2a28bb7d75817:5:69507214";
+  var uri = "http://api.nytimes.com/svc/mostpopular/v2/mostemailed/all-sections/1.json?api-key=";
+  $.ajax({
+    url: uri + ki
+  }).done(function(data) {
+    displayMostVisitedNews(data);
+  });
+}
 
 setFormattedDateTimes = function() {
   var currentDateTime = new Date();
@@ -23,7 +45,7 @@ setFormattedDateTimes = function() {
 }
 
 chrome.topSites.get(displayTopSites);
-
+getMostViewedNews();
 setFormattedDateTimes();
 window.setInterval(setFormattedDateTimes, 1000);
 

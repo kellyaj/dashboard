@@ -4,5 +4,9 @@
   "version"              : "0.1",
   "manifest_version"     : 2,
   "chrome_url_overrides" : { "newtab": "my_dashboard.html" },
-  "permissions"          : ["geolocation", "topSites"]
+  "permissions"          : [
+    "geolocation",
+    "topSites",
+    "http://api.nytimes.com/*"
+    ]
 }

@@ -95,7 +95,6 @@ body {
 .top-sites a {
   text-decoration: none;
 }
-
 .site-list-item {
   padding: 0.5em 0 0 0;
 }
@@ -106,16 +105,17 @@ body {
   margin: 3em 0 0 2em;
   width: 30%;
 }
-
 .news h3 {
   font-size: 0.8em;
   padding: 0.5em 0 0.5em 0;
 }
-
 .news a {
   color: black;
-  text-decoration: none;
   font-weight: 900;
+  text-decoration: none;
+}
+.news li {
+  padding: 0.6em 0 0 0;
 }
 
 .kr-iframe {

@@ -49,6 +49,36 @@ table {
 
 /* styles */
 
+.container {
+  background-color: #fcfcfd;
+}
+
+/* top bar */
+
+.top-bar div {
+  display: inline-block;
+}
+
+.top-bar {
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 2.5em;
+  font-weight: 900;
+}
+
+.weather-info {
+  margin: 3em 0 0 2em;
+}
+
+.weather-icon, .temp, .weather-description {
+  display: inline-block;
+}
+
+.time-section {
+  margin: 3em 0 0 2em;
+}
+
+/* middle */
+
 .kr-iframe {
   margin: 3em 0 0 2em;
   width: 880px;
@@ -63,17 +93,3 @@ table {
   padding: 0.5em 0 0 0;
 }
 
-.weather-info {
-  margin: 3em 0 0 2em;
-  font-family: "Lucida Console", Monaco, monospace;
-}
-
-.weather-icon, .temp, .weather-description {
-  display: inline-block;
-}
-
-.time-section {
-  font-family: "Lucida Console", Monaco, monospace;
-  font-weight: 900;
-  margin: 3em 0 0 2em;
-}

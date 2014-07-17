@@ -8,9 +8,14 @@ createSiteListItem = function(site) {
   return html;
 }
 
+createSearchUrl = function(articleTitle) {
+  var baseSearchUrl = "http://google.com/?gws_rd=ssl#q=";
+  return baseSearchUrl += articleTitle.replace(/\s/g, "+");
+}
+
 createNYTimesListItem = function(article) {
   var html = '<li class="nyt-list-item"><h2><a href="';
-  html += article.url + '">' + article.title + '</a></h2><h3>' + article.abstract  + '</h3></li>';
+  html += createSearchUrl(article.title) + '">' + article.title + '</a></h2><h3>' + article.abstract  + '</h3></li>';
   return html;
 }
 
@@ -56,7 +61,6 @@ navigator.geolocation.getCurrentPosition(function(position) {
 
 displayWeather = function(latitude, longitude) {
   var requestUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude;
-  $('[data-id=weather-description]').html("Loading...");
   $.ajax({
     url: requestUrl
   }).done(function(data) {
@@ -68,6 +72,5 @@ displayWeather = function(latitude, longitude) {
     var degreeHex = '\xB0';
   $('[data-id=weather-icon]').attr("src", weatherIconUrl);
   $('[data-id=temp]').html(fahrenheitTemp + degreeHex);
-  $('[data-id=weather-description]').html(description.toUpperCase());
   })
 };
